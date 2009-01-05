@@ -1,16 +1,29 @@
 Net-Server-Framework
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+Net::Server::Framework is the result of many iterations of backend
+daemon programming. I use the Net::Server::PreFork code for some years
+now and wrote some libs around it. This is an attempt to take those libs
+and release them. The challenge for me is to isolate all the additions,
+clean them up and pack them into one framework that installs nicely.
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+The purpose of this framework is an easy to use event driven and
+scalable infrastructure that you can use to run multiple daemons doing
+specific things. There are some key parts in this setup.
 
+The central registry is used to register each daemon with its connection
+info (UNIX socket or IP/port). The client library resolves daemon names
+with this registry to connection information. The client lib supports
+both, synchronous and asynchronous connection handling via a cache
+daemon.
+
+This version uses SQLite as the standard DB. Most parameters in the
+system (including the database type) are configurable via INI style
+config files.
+
+This framework is used in some quite busy environments and some things
+might look strange but are the result of optimization or problems we ran
+into when scaling. One such thing is the DB abstraction which is tuned
+for the least possible overhead (memory and cpu wise).
 
 INSTALLATION
 
