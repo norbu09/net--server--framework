@@ -1,92 +1,89 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl -Ilib -w
 
-package Net::Server::Framework;
+package Net::Server::Framework::Auth;
 
 use strict;
 use warnings;
 use Carp;
-use Data::Serializer;
+use Switch;
 use Net::Server::Framework::DB;
 use Net::Server::Framework::Crypt;
-use Net::Server::Framework::Auth;
-use Net::Server::Framework::Format;
-use base qw/Exporter Net::Server::PreFork/;
-use vars qw(@EXPORT $VERSION);
 
 our ($VERSION) = '1.0';
-@EXPORT = qw/options encode decode register/;
 
-sub options {
-    my $self     = shift;
-    my $prop     = $self->{server};
-    my $template = shift;
-
-    $self->SUPER::options($template);
-    $prop->{daemon_name} ||= undef;
-    $template->{daemon_name} = \$prop->{daemon_name};
-    $prop->{node_name} ||= undef;
-    $template->{node_name} = \$prop->{node_name};
-}
-
-sub encode {
-    my ( $self, $data ) = @_;
-    my $s = Data::Serializer->new( compress => '1' );
-    return $s->serialize($data);
-}
-
-sub decode {
-    my ( $self, $data ) = @_;
-    my $s = Data::Serializer->new( compress => '1' );
-    return $s->deserialize($data);
-}
-
-sub register {
-    my $self  = shift;
-    my $dereg = shift;
-    my $status;
-    if (defined $dereg) {
-        $status = $dereg;
-    } else {
-        $status = 'running';
+sub authenticate {
+    my ( $user, $token, $mode ) = @_;
+    switch ($mode) {
+        case /client/i { return ( _token( $user, $token ) ); }
+        case /server/i { return ( _check( $user, $token ) ); }
+        case /userpass/i { return ( _userpass( $user, $token ) ); }
+        else { carp "2003"; }
     }
-    my $dbh   = Net::Server::Framework::DB::dbconnect('registry');
-    my ( $host, $port );
-    foreach my $p ( @{ $self->{server}->{port} } ) {
-        $port .= $p . ',';
-    }
-    $port =~ s/,$//;
-    foreach my $h ( @{ $self->{server}->{host} } ) {
-        $host .= $h . ',';
-    }
-    $host =~ s/,$//;
-    my $data = {
-        service   => $self->{server}->{daemon_name},
-        port      => $port,
-        host      => $host,
-        lastcheck => time(),
-        startup   => time(),
-        status    => $status,
-    };
-    Net::Server::Framework::DB::put( { dbh => $dbh, data => $data, table => 'services' , replace_into => 'true'} );
-    $self->log(2,"Registered successfuly\n");
 }
 
+sub make_pass {
+    my $pass = shift;
+    return Net::Server::Framework::Crypt::hash($pass);
+}
+
+sub _check {
+    my ( $user, $token ) = @_;
+    my $dbh = Net::Server::Framework::DB::dbconnect('cloud');
+    my $res = Net::Server::Framework::DB::get( { dbh => $dbh, key => 'auth', term => $user } );
+    if ( my $pass = $res->{$user}->{password} ) {
+        my $string = Net::Server::Framework::Crypt::decrypt( $token, $pass, 'blowfish', 'a' );
+        print STDERR "DEBUG: $pass - $string\n";
+        my ( $u, $time ) = split( /-/, $string, 2 );
+        print STDERR "DEBUG: $u, $time\n";
+        if ( $u eq $user ) {
+
+            # more than one day time difference is too much
+            if (    ( ( $time + 86400 ) gt time )
+                and ( time gt( $time - 86400 ) ) )
+            {
+                return;
+            }
+        }
+    }
+    return 2200;
+}
+
+sub _token {
+    my ( $user, $pass ) = @_;
+
+    my $string = $user . "-" . time;
+    my $token = Net::Server::Framework::Crypt::encrypt( $string, $pass, 'blowfish', 'a' );
+    chomp($token);
+    return $token;
+}
+
+sub _userpass {
+    my ( $user, $token ) = @_;
+    my $dbh = Net::Server::Framework::DB::dbconnect('cloud');
+    my $res = Net::Server::Framework::DB::get( { dbh => $dbh, key => 'auth', term => $user } );
+    if ( my $pass = $res->{$user}->{password} ) {
+        if ( $token eq $pass ) {
+            return;
+        }
+    }
+    return 2200;
+}
 
 1;
 
 =head1 NAME
 
-Net::Server::Framework - a small framework arounf the famous Net::Server libs
+<Net::Server::Framework::Auth> - <One-line description of module's purpose>
 
 
 =head1 VERSION
 
-This documentation refers to Net::Server::Framework version 1.0.
+This documentation refers to <Net::Server::Framework::Auth> version 0.1.
 
 
 =head1 SYNOPSIS
 
-    use Net::Server::Framework;
+    use <Net::Server::Framework::Auth>;
     
 # Brief but working code example(s) here showing the most common usage(s)
 
