@@ -3,7 +3,7 @@
 ###     spooler server class               ###
 ###----------------------------------------###
 
-use base qw/Net::Server::Framework::Daemon/;
+use base qw/Net::Server::Framework/;
 use strict;
 use warnings;
 

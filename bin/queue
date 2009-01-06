@@ -9,7 +9,7 @@
 # { ID => md5Hash, data => serialized hash, ts => timestamp }
 # commands: get, put, del, archive,
 
-use base qw/Net::Server::Framework::Daemon/;
+use base qw/Net::Server::Framework/;
 use strict;
 use warnings;
 
