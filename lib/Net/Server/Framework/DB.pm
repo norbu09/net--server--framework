@@ -3,7 +3,6 @@
 # a database module abstracting the "magic" of what we need for the
 # general daemon
 # the static config file is in etc/db.conf
-# $Id: DB.pm,v 1.11 2007/11/16 04:57:17 lenz Exp $
 
 package Net::Server::Framework::DB;
 
@@ -179,5 +178,4 @@ sub do {
     return 0;
 }
 
-# 'cause i am a lib
 1;

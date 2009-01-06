@@ -1,3 +1,4 @@
+bin/logger
 bin/queue
 bin/spooler
 Changes

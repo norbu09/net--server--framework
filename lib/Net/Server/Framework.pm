@@ -86,60 +86,67 @@ This documentation refers to Net::Server::Framework version 1.0.
 
 =head1 SYNOPSIS
 
-    use Net::Server::Framework;
-    
-# Brief but working code example(s) here showing the most common usage(s)
+In order to use this codebase you have to subclass this class. To get an
+idea of how this looks like have a look at the Net::Server
+documentation.
 
-    # This section will be as far as many users bother reading,
-    # so make it as educational and exemplary as possible.
+A typical invocation looks like this:
 
+    use base qw/Net::Server::Framework/;
+    use strict;
+    use warnings;
+
+    __PACKAGE__->run;
+    exit;
 
 =head1 DESCRIPTION
 
-A full description of the module and its features.
-May include numerous subsections (i.e., =head2, =head3, etc.).
+Net::Server::Framework is the result of many iterations of backend
+daemon programming. I use the Net::Server::PreFork code for some years
+now and wrote some libs around it. This is an attempt to take those libs
+and release them. The challenge for me is to isolate all the additions,
+clean them up and pack them into one framework that installs nicely.
 
+The purpose of this framework is an easy to use event driven and
+scalable infrastructure that you can use to run multiple daemons doing
+specific things. There are some key parts in this setup.
+
+The central registry is used to register each daemon with its connection
+info (UNIX socket or IP/port). The client library resolves daemon names
+with this registry to connection information. The client lib supports
+both, synchronous and asynchronous connection handling via a cache
+daemon.
+
+This version uses SQLite as the standard DB. Most parameters in the
+system (including the database type) are configurable via INI style
+config files.
+
+This framework is used in some quite busy environments and some things
+might look strange but are the result of optimization or problems we ran
+into when scaling. One such thing is the DB abstraction which is tuned
+for the least possible overhead (memory and cpu wise).
+
+The source code and some working examples can be found on github:
+http://github.com/norbu09/net--server--framework/tree/master
 
 =head1 SUBROUTINES/METHODS
 
-A separate section listing the public components of the module's interface.
-These normally consist of either subroutines that may be exported, or methods
-that may be called on objects belonging to the classes that the module provides.
-Name the section accordingly.
-
-In an object-oriented module, this section should begin with a sentence of the
-form "An object of this class represents...", to give the reader a high-level
-context to help them understand the methods that are subsequently described.
-
+The exported and overridden subroutines are:
+- options
+- encode
+- decode
+- register
 
 =head1 DIAGNOSTICS
 
-A list of every error and warning message that the module can generate
-(even the ones that will "never happen"), with a full explanation of each
-problem, one or more likely causes, and any suggested remedies.
-(See also "Documenting Errors" in Chapter 13.)
+the framework normally logs to a central logfile under /var/log but can
+log directly to syslog as well. Have a look at the Net::Server options.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
-A full explanation of any configuration system(s) used by the module,
-including the names and locations of any configuration files, and the
-meaning of any environment variables or properties that can be set. These
-descriptions must also include details of any configuration language used.
-(See also "Configuration Files" in Chapter 19.)
-
-
-=head1 DEPENDENCIES
-
-A list of all the other modules that this module relies upon, including any
-restrictions on versions, and an indication of whether these required modules are
-part of the standard Perl distribution, part of the module's distribution,
-or must be installed separately.
-
-
-=head1 INCOMPATIBILITIES
-
-There are no known incompatibilities to date. Feel free to report any problems
-you encounter to the author.
+The framework expects a etc/ directory with a config file containing a
+Net::Server conform structure with some extra fields. have a look at the
+github repository for more reference.
 
 =head1 BUGS AND LIMITATIONS
 
