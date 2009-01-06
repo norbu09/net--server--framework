@@ -4,3 +4,5 @@ CREATE TABLE users (
     created integer,
     active boolean default TRUE
 );
+
+INSERT INTO users VALUES ("test", "pass", "2009-01-06T17:44:38", 1);
