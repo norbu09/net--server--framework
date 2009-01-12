@@ -179,3 +179,73 @@ sub do {
 }
 
 1;
+
+=head1 NAME
+
+Net::Server::Framework::DB - DBI wrapper for Net::Server::Framework
+based daemons
+
+
+=head1 VERSION
+
+This documentation refers to Net::Server::Framework::Auth version 1.25.
+
+
+=head1 SYNOPSIS
+
+A typical invocation looks like this:
+
+    my $dbh = Net::Server::Framework::DB::dbconnect($DB);
+    my $res = Net::Server::Framework::DB::get( { 
+                dbh => $dbh, 
+                key => 'host', 
+                term => $service 
+    } );
+
+
+=head1 DESCRIPTION
+
+This is a lib that is used to collect all SQL statements from one
+application. Typically you end up with one DB.pm for many daemons that
+are used in one project. The DB.pm provided with the package covers only
+the internal functions needed by the platform itself like registry and
+queue. The syntax is really minimal and that was the purpose. small easy
+queries are fast for high load environments.
+
+=head1 SUBROUTINES/METHODS
+
+The commands accepted by the lib are: 
+ - dbconnect
+ - get
+ - put
+ - do
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+The library needs a working etc/db.conf file.
+
+=head1 BUGS AND LIMITATIONS
+
+There are no known bugs in this module.
+Please report problems to 
+Lenz Gschwendtner ( <lenz@springtimesoft.com> )
+Patches are welcome.
+
+=head1 AUTHOR
+
+Lenz Gschwendtner ( <lenz@springtimesoft.com> )
+
+
+
+=head1 LICENCE AND COPYRIGHT
+
+Copyright (c) 
+2007 Lenz Gschwerndtner ( <lenz@springtimesoft.comn> )
+All rights reserved.
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

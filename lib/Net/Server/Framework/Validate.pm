@@ -10,6 +10,8 @@ use Carp;
 use Data::FormValidator;
 use Data::Dumper;
 
+our ($VERSION) = '1.1';
+
 sub verify_command {
     my $data = shift;
 
@@ -58,3 +60,61 @@ sub _is_valid_command {
 
 1;
 
+=head1 NAME
+
+Net::Server::Framework::Validate - validation library for Net::Server::Framework
+based daemons
+
+
+=head1 VERSION
+
+This documentation refers to Net::Server::Framework::Validate version 1.1.
+
+
+=head1 SYNOPSIS
+
+A typical invocation looks like this:
+
+        $c = Net::Server::Framework::Validate::verify_command($c);
+        if ($c =~ /^\d+$/){
+            print STDERR "Validation failed - dodgy command!";
+            return $c;
+        }
+
+=head1 DESCRIPTION
+
+This interface is used to validate commands sent to the daemon. you have
+to provide valid commands in the array defined in _is_valid_command.
+
+    my @commands = qw{login MORE COMMANDS};
+
+=head1 SUBROUTINES/METHODS
+
+The commands accepted by the lib are: 
+ - verify_command
+
+=head1 BUGS AND LIMITATIONS
+
+There are no known bugs in this module.
+Please report problems to 
+Lenz Gschwendtner ( <lenz@springtimesoft.com> )
+Patches are welcome.
+
+=head1 AUTHOR
+
+Lenz Gschwendtner ( <lenz@springtimesoft.com> )
+
+
+
+=head1 LICENCE AND COPYRIGHT
+
+Copyright (c) 
+2007 Lenz Gschwerndtner ( <lenz@springtimesoft.comn> )
+All rights reserved.
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

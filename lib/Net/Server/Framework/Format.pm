@@ -46,3 +46,58 @@ sub c2m {
 }
 
 1;
+
+=head1 NAME
+
+Net::Server::Framework::Fromat - response formatter Net::Server::Framework
+based daemons
+
+
+=head1 VERSION
+
+This documentation refers to Net::Server::Framework::Format version 1.1.
+
+
+=head1 SYNOPSIS
+
+A typical invocation looks like this:
+
+    my $answer = Net::Server::Framework::Format::format( $c->{data} );
+
+=head1 DESCRIPTION
+
+This library is used for formatting resonses from daemons to a format
+understood by the client lib. it is meant for mapping error codes to
+error masseges and formatting out debug output oder output not meant for
+the customer on the other side of the API.
+
+=head1 SUBROUTINES/METHODS
+
+The commands accepted by the lib are: 
+ - format
+
+=head1 BUGS AND LIMITATIONS
+
+There are no known bugs in this module.
+Please report problems to 
+Lenz Gschwendtner ( <lenz@springtimesoft.com> )
+Patches are welcome.
+
+=head1 AUTHOR
+
+Lenz Gschwendtner ( <lenz@springtimesoft.com> )
+
+
+
+=head1 LICENCE AND COPYRIGHT
+
+Copyright (c) 
+2007 Lenz Gschwerndtner ( <lenz@springtimesoft.comn> )
+All rights reserved.
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

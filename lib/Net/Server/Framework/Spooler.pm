@@ -89,3 +89,62 @@ sub _chat {
 
 1;
 
+=head1 NAME
+
+Net::Server::Framework::Spooler - asyncronious interface for Net::Server::Framework
+based daemons
+
+
+=head1 VERSION
+
+This documentation refers to Net::Server::Framework::Spooler version 1.0.
+
+
+=head1 SYNOPSIS
+
+A typical invocation looks like this:
+
+    my $put = {body => $c, user => $c->{user}};
+    $c->{ID} = Net::Server::Framework::Spooler::put($put);
+
+=head1 DESCRIPTION
+
+This interface is used to process asyncronous requests for daemons. It
+relies on a spooler daemon and a spool database. If present this lib
+handles the interaction of clients and server that need to process
+things in a asyncronous way.
+
+=head1 SUBROUTINES/METHODS
+
+The commands accepted by the lib are: 
+ - put
+ - get
+ - mod
+ - del
+ - virgin
+
+=head1 BUGS AND LIMITATIONS
+
+There are no known bugs in this module.
+Please report problems to 
+Lenz Gschwendtner ( <lenz@springtimesoft.com> )
+Patches are welcome.
+
+=head1 AUTHOR
+
+Lenz Gschwendtner ( <lenz@springtimesoft.com> )
+
+
+
+=head1 LICENCE AND COPYRIGHT
+
+Copyright (c) 
+2007 Lenz Gschwerndtner ( <lenz@springtimesoft.comn> )
+All rights reserved.
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

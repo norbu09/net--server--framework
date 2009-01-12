@@ -15,6 +15,7 @@ use Time::HiRes;
 use Data::Serializer;
 
 our ($VERSION) = '1.0';
+our $DB = 'registry';
 
 sub c_connect {
     my $service = shift;
@@ -91,7 +92,7 @@ sub log {
 
 sub _find {
     my $service = shift;
-    my $dbh     = Net::Server::Framework::DB::dbconnect('registry');
+    my $dbh     = Net::Server::Framework::DB::dbconnect($DB);
     my @ret;
     my $res =
       Net::Server::Framework::DB::get( { dbh => $dbh, key => 'host', term => $service } );
@@ -117,3 +118,68 @@ sub _find {
 }
 
 1;
+
+=head1 NAME
+
+Net::Server::Framework::Client - a client library with autodiscovery for
+daemons
+
+
+=head1 VERSION
+
+This documentation refers to Net::Server::Framework::Client version 1.0.
+
+
+=head1 SYNOPSIS
+
+A typical invocation looks like this:
+
+    my $data = Net::Server::Framework::Client::talk('DAEMON_TO_TALK_TO',$c);
+
+=head1 DESCRIPTION
+
+This is a lib that is used to interface with daemons. the interface uses
+by default a Data::Serializer compressed string to exchange information
+and finds the appropriate daemon based on the name. the name is looked
+up in the central registry configured with the $DB variable. the
+database based registry holds connection data like unix sockets or TCP
+sockets. If there is more than one daemon with the same name the lib
+does a basic round robin.
+
+
+=head1 SUBROUTINES/METHODS
+
+The commands accepted by the lib are: 
+- talk
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+The library needs a working etc/db.conf file and a configured $DB
+variable. If asyncronous connections are used then a spooler process is
+needed.
+
+=head1 BUGS AND LIMITATIONS
+
+There are no known bugs in this module.
+Please report problems to 
+Lenz Gschwendtner ( <lenz@springtimesoft.com> )
+Patches are welcome.
+
+=head1 AUTHOR
+
+Lenz Gschwendtner ( <lenz@springtimesoft.com> )
+
+
+
+=head1 LICENCE AND COPYRIGHT
+
+Copyright (c) 
+2007 Lenz Gschwerndtner ( <lenz@springtimesoft.comn> )
+All rights reserved.
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

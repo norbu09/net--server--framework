@@ -59,3 +59,57 @@ sub hash {
 }
 
 1;
+
+=head1 NAME
+
+Net::Server::Framework::Crypt - a wrapper for several encryption libs
+
+
+=head1 VERSION
+
+This documentation refers to Net::Server::Framework::Crypt version 1.0.
+
+
+=head1 SYNOPSIS
+
+A typical invocation looks like this:
+    my $token = Net::Server::Framework::Crypt::encrypt( $string, $pass, 'blowfish', 'a' );
+
+=head1 DESCRIPTION
+
+This library currently supports only blowfish as encryption algorythm
+but extending it is easy. It is used to hash passwords and en/decrypt
+information that should be stored securely.
+
+=head1 SUBROUTINES/METHODS
+
+The commands accepted by the lib are: 
+ - encrypt
+ - decrypt
+ - hash
+
+=head1 BUGS AND LIMITATIONS
+
+There are no known bugs in this module.
+Please report problems to 
+Lenz Gschwendtner ( <lenz@springtimesoft.com> )
+Patches are welcome.
+
+=head1 AUTHOR
+
+Lenz Gschwendtner ( <lenz@springtimesoft.com> )
+
+
+
+=head1 LICENCE AND COPYRIGHT
+
+Copyright (c) 
+2007 Lenz Gschwerndtner ( <lenz@springtimesoft.comn> )
+All rights reserved.
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
