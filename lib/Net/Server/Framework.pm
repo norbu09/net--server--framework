@@ -13,7 +13,7 @@ use Net::Server::Framework::Format;
 use base qw/Exporter Net::Server::PreFork/;
 use vars qw(@EXPORT $VERSION);
 
-our ($VERSION) = '1.0';
+our ($VERSION) = '1.1';
 @EXPORT = qw/options encode decode register/;
 
 sub options {
