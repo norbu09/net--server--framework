@@ -44,18 +44,18 @@ for compatibility
 
 =head1 VERSION
 
-This documentation refers to Net::Server::Framework::Config version 1.3.
+This documentation refers to C<Net::Server::Framework::Config> version 1.3.
 
 =head1 DESCRIPTION
 
-This library is only listed for campatibility and needs to be replaced
+This library is only listed for compatibility and needs to be replaced
 by one of the established configuration parser.
 
 =head1 BASIC METHODS
 
 =head2 file2hash
 
-This converts a ini style file into a hash
+This converts a INI style file into a hash
 
 =head1 BUGS AND LIMITATIONS
 

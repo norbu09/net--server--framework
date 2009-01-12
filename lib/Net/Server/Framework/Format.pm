@@ -66,9 +66,9 @@ A typical invocation looks like this:
 
 =head1 DESCRIPTION
 
-This library is used for formatting resonses from daemons to a format
-understood by the client lib. it is meant for mapping error codes to
-error masseges and formatting out debug output oder output not meant for
+This library is used for formatting responses from daemons to a format
+understood by the client lib. It is meant for mapping error codes to
+error messages and formatting out debug output oder output not meant for
 the customer on the other side of the API.
 
 =head1 BASIC METHODS
@@ -81,7 +81,7 @@ Formating of responses before returning to the requester.
 
 =head2 c2m
 
-a wrapper function around error mapping. this can be replaced with your
+A wrapper function around error mapping. This can be replaced with your
 own error mapping functions.
 
 =head1 BUGS AND LIMITATIONS

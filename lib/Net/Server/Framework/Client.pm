@@ -121,7 +121,7 @@ sub _find {
 
 =head1 NAME
 
-Net::Server::Framework::Client - a client library with autodiscovery for
+Net::Server::Framework::Client - a client library with auto discovery for
 daemons
 
 
@@ -138,11 +138,11 @@ A typical invocation looks like this:
 
 =head1 DESCRIPTION
 
-This is a lib that is used to interface with daemons. the interface uses
-by default a Data::Serializer compressed string to exchange information
-and finds the appropriate daemon based on the name. the name is looked
-up in the central registry configured with the $DB variable. the
-database based registry holds connection data like unix sockets or TCP
+This is a lib that is used to interface with daemons. The interface uses
+by default a C<Data::Serializer> compressed string to exchange information
+and finds the appropriate daemon based on the name. The name is looked
+up in the central registry configured with the $DB variable. The
+database based registry holds connection data like UNIX sockets or TCP
 sockets. If there is more than one daemon with the same name the lib
 does a basic round robin.
 
@@ -155,33 +155,33 @@ The connection logic.
 
 =head2 encode
 
-The analog to the Net::Server::Framework::encode function only client
+The analog to the C<Net::Server::Framework::encode> function only client
 sides.
 
 =head2 decode
 
-The analog to the Net::Server::Framework::decode function only client
+The analog to the C<Net::Server::Framework::decode> function only client
 sides.
 
 =head2 talk
 
-this method abstracts the connection logic and the syn/async connection
+This method abstracts the connection logic and the syn/async connection
 handling. Use this function to talk to a daemon within the
-Net::Server::Framework.
+C<Net::Server::Framework>.
 
 =head2 log
 
-deprecated. has to be consolidated to one general function that is
+Deprecated. Has to be consolidated to one general function that is
 backend neutral
 
 =head2 logging
 
-see log
+See log
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
 The library needs a working etc/db.conf file and a configured $DB
-variable. If asyncronous connections are used then a spooler process is
+variable. If asynchronous connections are used then a spooler process is
 needed.
 
 =head1 BUGS AND LIMITATIONS

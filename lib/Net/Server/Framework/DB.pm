@@ -188,7 +188,7 @@ based daemons
 
 =head1 VERSION
 
-This documentation refers to Net::Server::Framework::Auth version 1.25.
+This documentation refers to C<Net::Server::Framework::Auth> version 1.25.
 
 
 =head1 SYNOPSIS
@@ -209,7 +209,7 @@ This is a lib that is used to collect all SQL statements from one
 application. Typically you end up with one DB.pm for many daemons that
 are used in one project. The DB.pm provided with the package covers only
 the internal functions needed by the platform itself like registry and
-queue. The syntax is really minimal and that was the purpose. small easy
+queue. The syntax is really minimal and that was the purpose. Small easy
 queries are fast for high load environments.
 
 =head1 BASIC METHODS
@@ -218,14 +218,14 @@ The commands accepted by the lib are:
 
 =head2 dbconnect
 
-Connect to a database. supported databases in the moment are sqlite
-(default) mysql and postgresql. adding more databases is straight
+Connect to a database. Supported databases in the moment are SQLite
+(default) MySQL and PostgreSQL. Adding more databases is straight
 forward.
 
 =head2 get
 
-define your queries here. This is the central place for SQL in a
-application written in Net::Server::Framework. All queries have an
+Define your queries here. This is the central place for SQL in a
+application written in C<Net::Server::Framework>. All queries have an
 identifier and are limited to a maximum of three dimensions in the
 output hash.
 
@@ -235,7 +235,7 @@ This inserts data into the database
 
 =head2 do
 
-All stuff that is not an insert or an update goes here. predefined
+All stuff that is not an insert or an update goes here. Predefined
 queries as in get.
 
 =head1 CONFIGURATION AND ENVIRONMENT

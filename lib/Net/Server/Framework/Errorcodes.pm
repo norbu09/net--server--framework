@@ -76,9 +76,9 @@ A typical invocation looks like this:
 
 =head1 DESCRIPTION
 
-This is a lib for matching error codes to human readble error masseges.
-it is used by the Net::Server::framework::Format lib. The error codes
-are based on the EPP error codes common in the domain name industree.
+This is a lib for matching error codes to human readable error messages.
+it is used by the C<Net::Server::framework::Format> lib. The error codes
+are based on the EPP error codes common in the domain name industry.
 
 =head1 BASIC METHODS
 
@@ -86,7 +86,7 @@ The commands accepted by the lib are:
 
 =head2 c2m
 
-takes an error code and returns a error message in human readble form.
+Takes an error code and returns a error message in human readable form.
 
 =head1 BUGS AND LIMITATIONS
 

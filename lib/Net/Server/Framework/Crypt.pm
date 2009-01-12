@@ -67,7 +67,7 @@ Net::Server::Framework::Crypt - a wrapper for several encryption libs
 
 =head1 VERSION
 
-This documentation refers to Net::Server::Framework::Crypt version 1.0.
+This documentation refers to C<Net::Server::Framework::Crypt> version 1.0.
 
 
 =head1 SYNOPSIS
@@ -77,7 +77,7 @@ A typical invocation looks like this:
 
 =head1 DESCRIPTION
 
-This library currently supports only blowfish as encryption algorythm
+This library currently supports only blowfish as encryption algorithm
 but extending it is easy. It is used to hash passwords and en/decrypt
 information that should be stored securely.
 
@@ -87,15 +87,15 @@ The commands accepted by the lib are:
 
 =head2 encrypt
 
-encrypts a string.
+Encrypts a string.
 
 =head2 decrypt
 
-decrypts a string
+Decrypts a string
 
 =head2 hash
 
-hashs a string
+Hashes a string
 
 =head1 BUGS AND LIMITATIONS
 

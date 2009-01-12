@@ -13,7 +13,7 @@ use Net::Server::Framework::Format;
 use base qw/Exporter Net::Server::PreFork/;
 use vars qw(@EXPORT $VERSION);
 
-our ($VERSION) = '1.1';
+our ($VERSION) = '1.2';
 @EXPORT = qw/options encode decode register/;
 
 sub options {
@@ -76,18 +76,18 @@ sub register {
 
 =head1 NAME
 
-Net::Server::Framework - a small framework arounf the famous Net::Server libs
+Net::Server::Framework - an event driven infrastructure around Net::Server
 
 
 =head1 VERSION
 
-This documentation refers to Net::Server::Framework version 1.0.
+This documentation refers to C<Net::Server::Framework> version 1.0.
 
 
 =head1 SYNOPSIS
 
 In order to use this codebase you have to subclass this class. To get an
-idea of how this looks like have a look at the Net::Server
+idea of how this looks like have a look at the C<Net::Server>
 documentation.
 
 A typical invocation looks like this:
@@ -101,8 +101,8 @@ A typical invocation looks like this:
 
 =head1 DESCRIPTION
 
-Net::Server::Framework is the result of many iterations of backend
-daemon programming. I use the Net::Server::PreFork code for some years
+C<Net::Server::Framework> is the result of many iterations of backend
+daemon programming. I use the C<Net::Server::PreFork> code for some years
 now and wrote some libs around it. This is an attempt to take those libs
 and release them. The challenge for me is to isolate all the additions,
 clean them up and pack them into one framework that installs nicely.
@@ -133,12 +133,12 @@ http://github.com/norbu09/net--server--framework/tree/master
 
 =head2 options
 
-This function overrides the standard options function in Net::Server
+This function overrides the standard options function in C<Net::Server>
 
 =head2 encode
 
-This is a generig wrapper for transport encodings. This function can be
-overriden to use transports like JSON or XML. The standard is a
+This is a generic wrapper for transport encodings. This function can be
+overridden to use transports like JSON or XML. The standard is a
 compressed Data::Serialiser stream.
 
 =head2 decode
@@ -147,19 +147,19 @@ The reverse of encode.
 
 =head2 register
 
-This registeres the daemon in the registry and has to be called in the
-startup phase. it is also used to deregister the daemon in the teardown
+This registers the daemon in the registry and has to be called in the
+startup phase. It is also used to unregister the daemon in the tear down
 phase.
 
 =head1 DIAGNOSTICS
 
-the framework normally logs to a central logfile under /var/log but can
-log directly to syslog as well. Have a look at the Net::Server options.
+The framework normally logs to a central logfile under /var/log but can
+log directly to syslog as well. Have a look at the C<Net::Server> options.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
 The framework expects a etc/ directory with a config file containing a
-Net::Server conform structure with some extra fields. have a look at the
+C<Net::Server> conform structure with some extra fields. Have a look at the
 github repository for more reference.
 
 =head1 BUGS AND LIMITATIONS

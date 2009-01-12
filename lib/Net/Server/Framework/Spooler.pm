@@ -91,7 +91,7 @@ sub _chat {
 
 =head1 NAME
 
-Net::Server::Framework::Spooler - asyncronious interface for Net::Server::Framework
+Net::Server::Framework::Spooler - asynchronous interface for Net::Server::Framework
 based daemons
 
 
@@ -109,10 +109,10 @@ A typical invocation looks like this:
 
 =head1 DESCRIPTION
 
-This interface is used to process asyncronous requests for daemons. It
+This interface is used to process asynchronous requests for daemons. It
 relies on a spooler daemon and a spool database. If present this lib
 handles the interaction of clients and server that need to process
-things in a asyncronous way.
+things in a asynchronous way.
 
 =head1 BASIC METHODS
 
@@ -124,25 +124,25 @@ Insert a hash into the spooler
 
 =head2 get
 
-Retreve a hash from the spooler
+Retrieve a hash from the spooler
 
 =head2 mod
 
-update a hash in the spooler (normally this is done when a response is
+Update a hash in the spooler (normally this is done when a response is
 processed)
 
 =head2 del
 
-remove a hash from the spooler
+Remove a hash from the spooler
 
 =head2 virgin
 
-test if a hash is updated in the spooler. This function is called in
+Test if a hash is updated in the spooler. This function is called in
 async mode to test if we have a response or not (basic polling)
 
 =head2 archive
 
-this archives a hash into a archive location.
+This archives a hash into a archive location.
 
 =head1 BUGS AND LIMITATIONS
 

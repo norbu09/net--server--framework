@@ -78,10 +78,12 @@ based daemons
 
 =head1 VERSION
 
-This documentation refers to Net::Server::Framework::Auth version 1.0.
+This documentation refers to C<Net::Server::Framework::Auth> version 1.0.
 
 
 =head1 SYNOPSIS
+
+The Authentication part of the C<Net::Server::Framework>
 
 A typical invocation looks like this:
 

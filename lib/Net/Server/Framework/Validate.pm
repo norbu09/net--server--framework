@@ -83,7 +83,7 @@ A typical invocation looks like this:
 
 =head1 DESCRIPTION
 
-This interface is used to validate commands sent to the daemon. you have
+This interface is used to validate commands sent to the daemon. You have
 to provide valid commands in the array defined in _is_valid_command.
 
     my @commands = qw{login MORE COMMANDS};
