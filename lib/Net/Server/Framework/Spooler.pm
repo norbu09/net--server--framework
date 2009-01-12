@@ -114,14 +114,35 @@ relies on a spooler daemon and a spool database. If present this lib
 handles the interaction of clients and server that need to process
 things in a asyncronous way.
 
-=head1 SUBROUTINES/METHODS
+=head1 BASIC METHODS
 
 The commands accepted by the lib are: 
- - put
- - get
- - mod
- - del
- - virgin
+
+=head2 put
+
+Insert a hash into the spooler
+
+=head2 get
+
+Retreve a hash from the spooler
+
+=head2 mod
+
+update a hash in the spooler (normally this is done when a response is
+processed)
+
+=head2 del
+
+remove a hash from the spooler
+
+=head2 virgin
+
+test if a hash is updated in the spooler. This function is called in
+async mode to test if we have a response or not (basic polling)
+
+=head2 archive
+
+this archives a hash into a archive location.
 
 =head1 BUGS AND LIMITATIONS
 

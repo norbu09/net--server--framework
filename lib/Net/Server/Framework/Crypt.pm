@@ -81,12 +81,21 @@ This library currently supports only blowfish as encryption algorythm
 but extending it is easy. It is used to hash passwords and en/decrypt
 information that should be stored securely.
 
-=head1 SUBROUTINES/METHODS
+=head1 BASIC METHODS
 
 The commands accepted by the lib are: 
- - encrypt
- - decrypt
- - hash
+
+=head2 encrypt
+
+encrypts a string.
+
+=head2 decrypt
+
+decrypts a string
+
+=head2 hash
+
+hashs a string
 
 =head1 BUGS AND LIMITATIONS
 

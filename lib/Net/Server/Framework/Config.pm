@@ -51,6 +51,12 @@ This documentation refers to Net::Server::Framework::Config version 1.3.
 This library is only listed for campatibility and needs to be replaced
 by one of the established configuration parser.
 
+=head1 BASIC METHODS
+
+=head2 file2hash
+
+This converts a ini style file into a hash
+
 =head1 BUGS AND LIMITATIONS
 
 There are no known bugs in this module.

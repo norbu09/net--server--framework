@@ -71,10 +71,18 @@ understood by the client lib. it is meant for mapping error codes to
 error masseges and formatting out debug output oder output not meant for
 the customer on the other side of the API.
 
-=head1 SUBROUTINES/METHODS
+=head1 BASIC METHODS
 
 The commands accepted by the lib are: 
- - format
+
+=head2 format
+
+Formating of responses before returning to the requester.
+
+=head2 c2m
+
+a wrapper function around error mapping. this can be replaced with your
+own error mapping functions.
 
 =head1 BUGS AND LIMITATIONS
 

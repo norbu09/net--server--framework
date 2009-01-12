@@ -212,13 +212,31 @@ the internal functions needed by the platform itself like registry and
 queue. The syntax is really minimal and that was the purpose. small easy
 queries are fast for high load environments.
 
-=head1 SUBROUTINES/METHODS
+=head1 BASIC METHODS
 
 The commands accepted by the lib are: 
- - dbconnect
- - get
- - put
- - do
+
+=head2 dbconnect
+
+Connect to a database. supported databases in the moment are sqlite
+(default) mysql and postgresql. adding more databases is straight
+forward.
+
+=head2 get
+
+define your queries here. This is the central place for SQL in a
+application written in Net::Server::Framework. All queries have an
+identifier and are limited to a maximum of three dimensions in the
+output hash.
+
+=head2 put
+
+This inserts data into the database
+
+=head2 do
+
+All stuff that is not an insert or an update goes here. predefined
+queries as in get.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 

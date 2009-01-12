@@ -129,13 +129,27 @@ for the least possible overhead (memory and cpu wise).
 The source code and some working examples can be found on github:
 http://github.com/norbu09/net--server--framework/tree/master
 
-=head1 SUBROUTINES/METHODS
+=head1 BASIC METHODS
 
-The exported and overridden subroutines are:
-- options
-- encode
-- decode
-- register
+=head2 options
+
+This function overrides the standard options function in Net::Server
+
+=head2 encode
+
+This is a generig wrapper for transport encodings. This function can be
+overriden to use transports like JSON or XML. The standard is a
+compressed Data::Serialiser stream.
+
+=head2 decode
+
+The reverse of encode.
+
+=head2 register
+
+This registeres the daemon in the registry and has to be called in the
+startup phase. it is also used to deregister the daemon in the teardown
+phase.
 
 =head1 DIAGNOSTICS
 

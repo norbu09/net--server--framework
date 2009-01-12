@@ -80,10 +80,13 @@ This is a lib for matching error codes to human readble error masseges.
 it is used by the Net::Server::framework::Format lib. The error codes
 are based on the EPP error codes common in the domain name industree.
 
-=head1 SUBROUTINES/METHODS
+=head1 BASIC METHODS
 
 The commands accepted by the lib are: 
- - c2m
+
+=head2 c2m
+
+takes an error code and returns a error message in human readble form.
 
 =head1 BUGS AND LIMITATIONS
 

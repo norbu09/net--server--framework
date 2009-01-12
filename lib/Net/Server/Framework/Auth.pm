@@ -100,12 +100,27 @@ This is a lib that is used to authenticate clients connecting to the
 daemon.
 
 
-=head1 SUBROUTINES/METHODS
+=head1 BASIC METHODS
+
+=head2 authenticate
+
+This function authenticates a user against a stored password hash.
+
+=head2 make_pass
+
+This function creates a password hash secure enough to store it in a
+database.
+
+=head1 COMMANDS
 
 The commands accepted by the lib are: 
-- client
-- server
-- userpass
+
+=head2 client
+
+=head2 server
+
+=head2 userpass
+
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
@@ -122,8 +137,6 @@ Patches are welcome.
 =head1 AUTHOR
 
 Lenz Gschwendtner ( <lenz@springtimesoft.com> )
-
-
 
 =head1 LICENCE AND COPYRIGHT
 

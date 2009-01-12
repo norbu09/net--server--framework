@@ -88,10 +88,13 @@ to provide valid commands in the array defined in _is_valid_command.
 
     my @commands = qw{login MORE COMMANDS};
 
-=head1 SUBROUTINES/METHODS
+=head1 BASIC METHODS
 
 The commands accepted by the lib are: 
- - verify_command
+
+=head2 verify_command
+
+This tests for the validity of a command
 
 =head1 BUGS AND LIMITATIONS
 

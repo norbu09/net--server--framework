@@ -147,10 +147,36 @@ sockets. If there is more than one daemon with the same name the lib
 does a basic round robin.
 
 
-=head1 SUBROUTINES/METHODS
+=head1 BASIC METHODS
 
-The commands accepted by the lib are: 
-- talk
+=head2 c_connect
+
+The connection logic.
+
+=head2 encode
+
+The analog to the Net::Server::Framework::encode function only client
+sides.
+
+=head2 decode
+
+The analog to the Net::Server::Framework::decode function only client
+sides.
+
+=head2 talk
+
+this method abstracts the connection logic and the syn/async connection
+handling. Use this function to talk to a daemon within the
+Net::Server::Framework.
+
+=head2 log
+
+deprecated. has to be consolidated to one general function that is
+backend neutral
+
+=head2 logging
+
+see log
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
